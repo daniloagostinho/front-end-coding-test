@@ -1,0 +1,45 @@
+// retoana repositorios que o usuarios deu star
+
+{
+  search(query: "reactjs", type: REPOSITORY, first: 50) {
+    repositoryCount,
+    pageInfo {
+      endCursor
+      startCursor
+    }
+    edges {
+      node {
+        ... on Repository {
+          name
+        }
+      }
+    }
+  }
+}
+
+// retonando ok
+query {
+  viewer {
+    login
+    name
+    avatarUrl
+    bio
+    location
+    email
+    url
+    starredRepositories(first: 3) {
+      edges {
+        cursor
+        node {
+          id
+          name
+          primaryLanguage {
+            id
+            name
+            color
+          }
+        }
+      }
+    }
+  }
+}
